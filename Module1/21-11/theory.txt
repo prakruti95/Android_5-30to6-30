@@ -1,0 +1,19 @@
+how to create an object
+
+how to create a class
+
+
+single character
+length check
+vowel,consonant
+
+
+tops
+tops4
+
+loop
+condition
+function
+pointer
+variable declaration
+

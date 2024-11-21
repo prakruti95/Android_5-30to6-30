@@ -1,4 +1,4 @@
-a. Write a program to print the 1 to 10 using For in loop.
+a. Write a program to print the 1 to 10 using For loop.
 b. Write a Program to print the 51 to 60 using while loop
 c. write a program to print the 100 to 81 using do....while loop
 d .write a program you have to find the factorial of given number.
@@ -13,10 +13,18 @@ i. Write a program make a summation of given number(E.g. 1523 ans :-11)
 j. Write a program you have to make a summation of first and last Digit.
 (E.g. 1234 ans:-5)
 
-17. Write Program use when statement. Display Monday to Sunday
+17. Write Program use switch-case statement. Display Monday to Sunday
 
 18. Write a Program of Addition, Subtraction ,Multiplication and Division using
-When (Must Be Menu Driven)
+switch-case(Must Be Menu Driven)
 
 19. Write a program of to find out the Area of Triangle, Rectangle and Circle
 using If Condition.(Must Be Menu Driven)
+
+20.Odd-even
+
+21.Prime-Not Prime
+
+22. Positive-Negative
+
+23. Leap year or not
