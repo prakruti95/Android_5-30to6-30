@@ -1,0 +1,20 @@
+Palindrome Checker
+Prime Number Generator
+Fibonacci Sequence Generator
+Print Floyd’s Triangle
+Sum of Prime Numbers
+Multiplication Table
+Count the Vowels and Consonants in a String
+Find the Greatest Common Divisor (GCD) of Two Numbers
+Armstrong Numbers
+Reverse a Number
+Count the Number of Digits in a Number
+Pattern Printing (Right-Angled Triangle)
+Find the LCM (Least Common Multiple) of Two Numbers
+Check for Perfect Number
+Input: 6
+Output: 6 is a perfect number (1 + 2 + 3 = 6)
+Reverse a String
+Print Pascal’s Triangle
+Find the Maximum and Minimum Elements in an Array
+Check if a Number is a Palindrome
