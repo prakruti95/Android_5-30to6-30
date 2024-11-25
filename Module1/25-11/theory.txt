@@ -1,0 +1,22 @@
+1.
+keyword ->static keyword
+
+companion object
+{
+}
+
+static variable
+static method
+
+2.
+this keyword
+
+3.
+Inheritance
+
+parent - child
+super  - sub
+base - derived
+
+
+
