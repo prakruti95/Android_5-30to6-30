@@ -1,0 +1,12 @@
+Array:Collection of items
+
+int marks[]={10,12,30,56,78};
+
+int marks[]={10,20};
+String name[]={"a","b"};
+
+File Create
+
+FileOutputStream -> write
+FileInputStream -> read
+
