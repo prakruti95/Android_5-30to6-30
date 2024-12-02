@@ -1,0 +1,42 @@
+FileOutputSream->write
+FileInputStram->read
+
+
+aditi
+
+String -> byte ->String
+Object
+
+
+
+Serialization and Deserialization[format - byte]
+Serializable
+
+OutputStream -> Serialize
+InputStream->Deserialize
+
+Exception Handling:
+
+Exception - Errors
+Exception Handling Keywords:
+
+try
+catch
+throw
+throws
+finally
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
