@@ -1,0 +1,38 @@
+Collections: 
+class+interafce+methods+blocks
+
+array -> you can not change array's size dynamically
+ArrayList
+
+Interface
+1)List : 
+
+class:
+ArrayList
+LinkedList
+
+2)Set:
+
+class:
+HashSet
+LinkedHashSet
+Treeset
+
+3)Map:
+
+class:
+HashMap
+
+
+Extra: 
+Vector
+Stack
+
+---------------------------
+Generics Method
+Interface: Comparable,Comparator
+
+Immutable -can not change 
+Mutable - can change
+
+
