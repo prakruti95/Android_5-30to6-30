@@ -1,0 +1,27 @@
+Task: Combining All Concepts
+Objective: Combine inheritance, static variables, this, super, and final in a real-world scenario.
+
+Instructions:
+Create a class hierarchy with the following structure:
+
+Person class:
+
+final String name
+final int age
+Constructor to initialize name and age.
+Student class (inherits from Person):
+
+int grade
+Constructor to initialize name, age, and grade.
+A method printDetails() that prints the student’s name, age, and grade.
+Teacher class (inherits from Person):
+
+String subject
+Constructor to initialize name, age, and subject.
+A method printDetails() that prints the teacher’s name, age, and subject.
+School class:
+
+Static variable totalPeople to count the number of students and teachers.
+Static method addPerson() to increment the totalPeople count.
+Static method getTotalPeople() to return the total count of people.
+In the main function, create instances of Student and Teacher, call the printDetails() method for each, and use the School class to track the total number of people in the school.
