@@ -1,0 +1,41 @@
+Aestro
+Blinder
+cupcake
+donut
+eclairs
+froyo
+gigngerbread
+honeycomb
+icecream sandwich
+jellybean
+kitkat
+lolipop
+marshmallow->6.0
+nogut->7.0
+oreo->8.0
+pie->9.0
+Q->10.0
+11
+12
+13
+14
+15
+
+
+Android Studio Project Architecture:
+
+1)app
+
+manifest->launching
+kotlin+java->Code
+res
+drawable->images add
+layout->designing-> XML
+mipmap->inbuilt images
+values->color,string,theme
+xml->xml code
+
+
+2)gradle scripts:
+build.gradle
+build.gradle
