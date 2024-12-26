@@ -1,0 +1,29 @@
+Basic Layouts:
+
+Relative
+Linear
+
+Grid
+Table 
+Custom
+Frame
+
+Fragment : Multiple Screens on one activity
+Fragment will always launch inside activity
+Fragment will never assigned in manifest file
+
+Types of fragment
+1)Static Fragment -> Launching -> XML
+2)Dynamic Fragment -> Launching ->Kotlin
+
+Transactions:
+1)A to A
+2)A to F
+3)F to A
+4)F to F
+
+Destination  -> Activity -> Intent
+Destination -> Fragment -> Manager
+
+
+
