@@ -1,0 +1,31 @@
+Layouts
+1)Relative
+2)Linear
+3)Frame
+4)Grid
+5)Table
+6)Custom
+
+Components:
+Textview
+Edittext
+Imageview
+Button
+Searchview
+Listview
+Alertialog
+[Custom Dialog]
+
+Topics:
+Intent
+Fragment
+SharedPrefrence
+Pass data from one screen to another screen
+SplashScreen
+Basic Validation
+Lottiee Animation
+ 
+Adapter:
+ArrayAdapter
+BaseAdapter
+
