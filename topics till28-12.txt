@@ -25,6 +25,7 @@ SplashScreen
 Basic Validation
 Lottiee Animation
 Menus
+Texttospeech
  
 Adapter:
 ArrayAdapter
