@@ -24,6 +24,7 @@ Pass data from one screen to another screen
 SplashScreen
 Basic Validation
 Lottiee Animation
+Menus
  
 Adapter:
 ArrayAdapter
