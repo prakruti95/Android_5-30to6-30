@@ -26,8 +26,13 @@ Basic Validation
 Lottiee Animation
 Menus
 Texttospeech
+TabLayout
+Bottom Navigation
+
+
  
 Adapter:
 ArrayAdapter
 BaseAdapter
+FragmentStatePagerAdapter
 
