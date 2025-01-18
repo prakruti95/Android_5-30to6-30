@@ -1,0 +1,26 @@
+DatePicker
+TimePicker
+Bundle
+SharedPrefrence
+Custom Dialog
+
+switch[ToggleButton]
+ConstraintLayout
+Validation
+
+
+get fragment A
+val myData = intent.getStringExtra("data")
+val bundle = Bundle()
+bundle.putString("data", myData) 
+
+
+val fragmentB = FragmentB()
+fragmentB.arguments = bundle
+supportFragmentManager.beginTransaction().apply {
+                     replace(R.id.home_nav_graph, fragmentB)
+                     commit()}
+
+
+
+
