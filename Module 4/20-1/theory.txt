@@ -1,0 +1,12 @@
+Offline:
+
+1)sqlite:
+2)realm:NO SQL
+3)room db:Library
+
+"CREATE TABLE "+ TABLE_NAME
+
+create table students
+
+
+
