@@ -28,6 +28,44 @@ Menus
 Texttospeech
 TabLayout
 Bottom Navigation
+Recyclerview
+Cardview
+Tablayout
+toolbar
+textinputlayout
+Frame by frame animation
+view animation
+layout animation
+navigation drawer
+sliderlayout
+checkbox
+radiobutton
+collpasingtoolbar layout
+spinner
+progressbar
+ratingbar
+seekbar
+webview
+toast msg
+snackbar
+floatingaction button
+run time permissions
+switch
+view binding
+bundle
+constraintlayoout
+shape of images
+coordinator layout
+appbar layout
+date picker,time picker
+sharedprefrence
+sqlite
+realm
+roomdb
+custom list
+custom grid
+click event of list and grid
+
 
 
  
@@ -35,4 +73,6 @@ Adapter:
 ArrayAdapter
 BaseAdapter
 FragmentStatePagerAdapter
+RecyclerAdapter
+Simple Adapter
 
