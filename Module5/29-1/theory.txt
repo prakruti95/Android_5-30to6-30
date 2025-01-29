@@ -1,0 +1,33 @@
+1)
+Mysql+API+JSON[Javascript object notation]
+JSON -> data interchanging format
+
+
+2)
+Firebase - Real time database
+API -> Application Programming interface
+
+
+[] -> JsonArray
+
+{} -> JsonObject
+
+[{},{},{},{}]
+
+
+API Link -> https://prakrutitech.buzz/Fluttertestapi/insert.php
+Parameters -> id,name,surname,email,password
+
+
+POST-> data send
+GET->data receive
+
+
+PUT->data update
+DELETE->data delete
+
+
+
+
+
+
