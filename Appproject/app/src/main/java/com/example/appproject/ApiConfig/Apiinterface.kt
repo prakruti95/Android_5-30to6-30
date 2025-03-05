@@ -1,5 +1,6 @@
 package com.example.appproject.ApiConfig
 
+import com.example.appproject.Model.SignupModel
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -19,5 +20,15 @@ interface Apiinterface
         @Field("user_password") user_password:String,
         @Field("type") type:String
         ): Call<Void>
+
+
+    @FormUrlEncoded
+    @POST("user_login.php")
+    fun signin
+      (
+        @Field("user_phone") user_phone:String,
+        @Field("user_password") user_password:String
+      ): Call<SignupModel>
+
 
 }

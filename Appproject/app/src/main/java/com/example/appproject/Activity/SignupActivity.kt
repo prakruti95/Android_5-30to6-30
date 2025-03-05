@@ -75,6 +75,10 @@ class SignupActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener,
         }
 
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAffinity()
+    }
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
         if(binding.rbMale.isChecked)
@@ -93,6 +97,7 @@ class SignupActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener,
     override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
 
     }
+
 
 
 }
