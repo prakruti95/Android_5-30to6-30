@@ -6,18 +6,32 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.appproject.Adapter.DashboardAdapter
+import com.example.appproject.ApiConfig.ApiClient
+import com.example.appproject.ApiConfig.Apiinterface
+import com.example.appproject.Model.DashboardModel
 import com.example.appproject.R
 import com.example.appproject.databinding.ActivityDashboardBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class DashboardActivity : AppCompatActivity()
 {
     private lateinit var binding: ActivityDashboardBinding
     lateinit var sharedPreferences: SharedPreferences
+    lateinit var apiinterface: Apiinterface
+    lateinit var dashboardlist:MutableList<DashboardModel>
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -35,6 +49,35 @@ class DashboardActivity : AppCompatActivity()
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
             window.statusBarColor = this.resources.getColor(R.color.white)
         }
+
+        var layoutmanager:RecyclerView.LayoutManager = GridLayoutManager(this,2)
+        binding.dashboardrecycler.layoutManager=layoutmanager
+
+        apiinterface = ApiClient().getconnect().create(Apiinterface::class.java)
+
+        var call: Call<List<DashboardModel>> = apiinterface.dashboardviewdata()
+        call.enqueue(object:Callback<List<DashboardModel>>
+        {
+            override fun onResponse(
+                call: Call<List<DashboardModel>>,
+                response: Response<List<DashboardModel>>)
+            {
+
+                dashboardlist = response.body() as MutableList<DashboardModel>
+
+                var adapter = DashboardAdapter(applicationContext,dashboardlist)
+                binding.dashboardrecycler.adapter=adapter
+
+            }
+
+            override fun onFailure(call: Call<List<DashboardModel>>, t: Throwable) {
+
+                Toast.makeText(applicationContext, "No Internet"+t.message, Toast.LENGTH_SHORT).show()
+                //Log.d("MYERROR",t.message.toString())
+            }
+        })
+
+
     }
     override fun onBackPressed() {
         //super.onBackPressed()

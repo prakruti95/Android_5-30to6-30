@@ -1,9 +1,11 @@
 package com.example.appproject.ApiConfig
 
+import com.example.appproject.Model.DashboardModel
 import com.example.appproject.Model.SignupModel
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface Apiinterface
@@ -29,6 +31,9 @@ interface Apiinterface
         @Field("user_phone") user_phone:String,
         @Field("user_password") user_password:String
       ): Call<SignupModel>
+
+    @GET("dashboard_view.php")
+    fun dashboardviewdata() : Call<List<DashboardModel>>
 
 
 }

@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.lottie.animation)
     implementation(libs.retrofit)
     implementation(libs.gson.converter)
+    implementation(libs.picasso)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
