@@ -1,5 +1,6 @@
 package com.example.appproject.ApiConfig
 
+import com.example.appproject.Model.CategoryModel
 import com.example.appproject.Model.DashboardModel
 import com.example.appproject.Model.SignupModel
 import retrofit2.Call
@@ -35,5 +36,11 @@ interface Apiinterface
     @GET("dashboard_view.php")
     fun dashboardviewdata() : Call<List<DashboardModel>>
 
+    @FormUrlEncoded
+    @POST("category_view.php")
+    fun categoryviewdata
+                (
+        @Field("data") data: Int?,
+    ): Call<List<CategoryModel>>
 
 }

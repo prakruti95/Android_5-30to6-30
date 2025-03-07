@@ -1,12 +1,14 @@
 package com.example.appproject.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.appproject.Activity.CategoryViewActivity
 import com.example.appproject.Model.DashboardModel
 import com.example.appproject.R
 import com.google.android.material.textview.MaterialTextView
@@ -34,7 +36,11 @@ class DashboardAdapter(var context:Context,var dashboardlist:MutableList<Dashboa
 
         holder.itemView.setOnClickListener {
 
-            //code
+            var i = Intent(context, CategoryViewActivity::class.java)
+            i.putExtra("did",dashboardlist.get(position).id)
+            i.putExtra("dname",dashboardlist.get(position).name)
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(i)
 
         }
     }
