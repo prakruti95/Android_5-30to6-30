@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appproject.Activity.CategoryViewActivity
+import com.example.appproject.Activity.FullScreenActivity
 import com.example.appproject.Model.CategoryModel
 import com.example.appproject.Model.DashboardModel
 import com.example.appproject.R
@@ -36,7 +37,16 @@ class CategoryAdapter(var context:Context,var categorylist:MutableList<CategoryM
         holder.textView3.setText(categorylist.get(position).description)
        // holder.imageview2.set(dashboardlist.get(position).url)
         Picasso.get().load(categorylist.get(position).url).into(holder.imageview)
+        holder.itemView.setOnClickListener {
 
+            var i = Intent(context,FullScreenActivity::class.java)
+            i.putExtra("image", categorylist[position].url)
+            i.putExtra("name", categorylist[position].name)
+            i.putExtra("desc", categorylist[position].description)
+            i.putExtra("price", categorylist[position].price)
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(i)
+        }
 
     }
 

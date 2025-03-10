@@ -104,6 +104,11 @@ class DashboardActivity : AppCompatActivity()
     {
         when(item.itemId)
         {
+            R.id.wishlist->
+            {
+                startActivity(Intent(applicationContext,WishlistActivity::class.java))
+            }
+
             R.id.logout->
             {
                 sharedPreferences.edit().clear().commit()

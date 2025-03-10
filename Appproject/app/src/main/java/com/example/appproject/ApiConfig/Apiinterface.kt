@@ -3,6 +3,7 @@ package com.example.appproject.ApiConfig
 import com.example.appproject.Model.CategoryModel
 import com.example.appproject.Model.DashboardModel
 import com.example.appproject.Model.SignupModel
+import com.example.appproject.Model.WishlistModel
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -43,4 +44,21 @@ interface Apiinterface
         @Field("data") data: Int?,
     ): Call<List<CategoryModel>>
 
+    @FormUrlEncoded
+    @POST("add_data_to_wishlist.php")
+    fun addwishlist
+                (
+        @Field("gift_name") gift_name:String?,
+        @Field("gift_description") gift_description:String?,
+        @Field("gift_price") gift_price:String?,
+        @Field("image") image:String?,
+        @Field("mobile") mobile:String?,
+        ): Call<Void>
+
+    @FormUrlEncoded
+    @POST("viewwishlist.php")
+    fun viewwishlistdata
+                (
+        @Field("mobile") data: String?,
+    ): Call<List<WishlistModel>>
 }

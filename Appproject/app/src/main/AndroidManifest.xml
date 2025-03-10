@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Appproject"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.WishlistActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.FullScreenActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.CategoryViewActivity"
             android:exported="false" />
         <activity
@@ -34,7 +40,7 @@
             android:exported="false" />
         <activity
             android:name=".SplashScreenActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>
