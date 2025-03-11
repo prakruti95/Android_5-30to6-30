@@ -1,5 +1,6 @@
 package com.example.appproject.ApiConfig
 
+import com.example.appproject.Model.CartModel
 import com.example.appproject.Model.CategoryModel
 import com.example.appproject.Model.DashboardModel
 import com.example.appproject.Model.SignupModel
@@ -61,4 +62,37 @@ interface Apiinterface
                 (
         @Field("mobile") data: String?,
     ): Call<List<WishlistModel>>
+
+    @FormUrlEncoded
+    @POST("add_data_to_cart.php")
+    fun addtocart
+                (
+        @Field("gift_name") gift_name:String?,
+        @Field("gift_description") gift_description:String?,
+        @Field("gift_price") gift_price:String?,
+        @Field("image") image:String?,
+        @Field("mobile") mobile:String?,
+    ): Call<Void>
+
+    @FormUrlEncoded
+    @POST("deletewishlist.php")
+    fun deletewishlistdata
+                (
+        @Field("id") id: Int?,
+    ): Call<Void>
+
+    @FormUrlEncoded
+    @POST("viewcart.php")
+    fun viewcartdata
+                (
+        @Field("mobile") data: String?,
+    ): Call<List<CartModel>>
+
+    @FormUrlEncoded
+    @POST("deletecart.php")
+    fun deletecartdata
+                (
+        @Field("id") id: Int?,
+    ): Call<Void>
+
 }

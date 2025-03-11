@@ -1,6 +1,6 @@
 package com.example.appproject.Model
 
-class WishlistModel
+class CartModel
 {
     var id=0
     var gift_name=""

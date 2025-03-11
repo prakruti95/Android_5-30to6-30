@@ -5,12 +5,15 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.appproject.Activity.CartAcivity
+import com.example.appproject.Activity.WishlistActivity
 import com.example.appproject.ApiConfig.ApiClient
 import com.example.appproject.ApiConfig.Apiinterface
 import com.example.appproject.Model.WishlistModel
@@ -24,10 +27,10 @@ import retrofit2.Response
 
 
 class WishlistAdapter(var context: Context?, var mutableList: MutableList<WishlistModel>) :
-    RecyclerView.Adapter<WishlistViewHolder>() {
+    RecyclerView.Adapter<WishlistAdapter.WishlistViewHolder>() {
 
-    //lateinit var apiInterface: Apiinterface
-    //lateinit var sharedPreferences: SharedPreferences
+    lateinit var apiInterface: Apiinterface
+    lateinit var sharedPreferences: SharedPreferences
     //var itemClickListener: ItemClickListener?=null
 
 
@@ -42,22 +45,26 @@ class WishlistAdapter(var context: Context?, var mutableList: MutableList<Wishli
         return mutableList.size
     }
 
-    override fun onBindViewHolder(holder: WishlistViewHolder, @SuppressLint("RecyclerView") position: Int) {
+    override fun onBindViewHolder(
+        holder: WishlistViewHolder,
+        @SuppressLint("RecyclerView") position: Int
+    ) {
 
-       // sharedPreferences = context!!
-         //   .getSharedPreferences("Appproject", Context.MODE_PRIVATE)
-        //apiInterface = ApiClient().getconnect()!!.create(Apiinterface::class.java)
-        //val myId = mutableList[position].id
-        val giftName = mutableList[position].name
-        val giftPrice = mutableList[position].price
-        val giftDesc = mutableList[position].description
+        sharedPreferences = context!!.getSharedPreferences("Appproject", Context.MODE_PRIVATE)
+        apiInterface = ApiClient().getconnect()!!.create(Apiinterface::class.java)
+        val myId = mutableList[position].id
+        val giftName = mutableList[position].gift_name
+        val giftPrice = mutableList[position].gift_price
+        val giftDesc = mutableList[position].gift_description
         val giftImage = mutableList[position].image
-
+//
         holder.textView1.text = giftName
         holder.textView2.text = giftPrice
-       // Picasso.get().load(giftImage).into(holder.imageView)
+        Picasso.get().load(giftImage).into(holder.imageView)
 
-//        holder.itemView.setOnClickListener {
+        Log.d("MYDATA", mutableList.get(position).gift_name)
+
+        //        holder.itemView.setOnClickListener {
 //            var intent = Intent(context, FullScreenActivity::class.java)
 //            intent.putExtra("image", giftImage)
 //            intent.putExtra("name", giftName)
@@ -67,58 +74,56 @@ class WishlistAdapter(var context: Context?, var mutableList: MutableList<Wishli
 //            context!!.startActivity(intent)
 //        }
 
-//        holder.removeFromWishlistBtn.setOnClickListener {
-//            val call = apiInterface.deleteWishList(myId)
-//            call.enqueue(object : Callback<Void> {
-//                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-//                    mutableList.removeAt(position)
-//                    //itemClickListener!!.onItemClick(holder.adapterPosition, it)
-//                    Toast.makeText(context, "Removed from wishlist", Toast.LENGTH_SHORT).show()
-//                    var i = Intent(context, WishlistActivity::class.java)
-//                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//                    context!!.startActivity(i)
-//                }
+        holder.removeFromWishlistBtn.setOnClickListener {
+            val call = apiInterface.deletewishlistdata(myId)
+            call.enqueue(object : Callback<Void> {
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    mutableList.removeAt(position)
+                    //itemClickListener!!.onItemClick(holder.adapterPosition, it)
+                    Toast.makeText(context, "Removed from wishlist", Toast.LENGTH_SHORT).show()
+                    var i = Intent(context, WishlistActivity::class.java)
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    context!!.startActivity(i)
+                }
+
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+                    Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
 //
-//                override fun onFailure(call: Call<Void>, t: Throwable) {
-//                    Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
-//                }
-//            })
-//        }
-//
-//        holder.addToCartBtn.setOnClickListener {
-//
-//            val mob = sharedPreferences.getString("mob", "")
-//
-//            val call = apiInterface.addDataToCart(
-//                giftName, giftDesc,
-//                giftPrice, giftImage, mob
-//            )
-//            call.enqueue(object : Callback<Void> {
-//                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-//                    Toast.makeText(context, "Added to cart", Toast.LENGTH_SHORT).show()
-//
-//                    val call2 = apiInterface.deleteWishList(myId)
-//                    call2.enqueue(object:Callback<Void>{
-//                        override fun onResponse(call: Call<Void>, response: Response<Void>) {
-//
-//                            var i = Intent(context, CartAcivity::class.java)
-//                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//                            context!!.startActivity(i)
-//
-//                        }
-//
-//                        override fun onFailure(call: Call<Void>, t: Throwable) {
-//                            Toast.makeText(context, "Failed2", Toast.LENGTH_SHORT).show()
-//                        }
-//                    })
-//
-//
-//                }
-//
-//                override fun onFailure(call: Call<Void>, t: Throwable) {
-//                    Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
-//                }
-//            })
+        holder.addToCartBtn.setOnClickListener {
+
+            val mob = sharedPreferences.getString("n1", "")
+
+            val call = apiInterface.addtocart(giftName, giftDesc, giftPrice, giftImage, mob)
+
+            call.enqueue(object : Callback<Void> {
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    Toast.makeText(context, "Added to cart", Toast.LENGTH_SHORT).show()
+
+                    val call2 = apiInterface.deletewishlistdata(myId)
+                    call2.enqueue(object : Callback<Void> {
+                        override fun onResponse(call: Call<Void>, response: Response<Void>) {
+
+                            var i = Intent(context, CartAcivity::class.java)
+                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            context!!.startActivity(i)
+
+                        }
+
+                        override fun onFailure(call: Call<Void>, t: Throwable) {
+                            Toast.makeText(context, "Failed2", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+
+
+                }
+
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+                    Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
+                }
+            })
         }
     }
 
@@ -131,18 +136,19 @@ class WishlistAdapter(var context: Context?, var mutableList: MutableList<Wishli
 //    }
 
 
-class WishlistViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val imageView: ImageView
-    val textView1: MaterialTextView
-    val textView2: MaterialTextView
-   // val addToCartBtn: MaterialButton
-   // val removeFromWishlistBtn: MaterialButton
+    class WishlistViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val imageView: ImageView
+        val textView1: MaterialTextView
+        val textView2: MaterialTextView
+        val addToCartBtn: MaterialButton
+        val removeFromWishlistBtn: MaterialButton
 
-    init {
-        imageView = itemView.findViewById(R.id.imageView)
-        textView1 = itemView.findViewById(R.id.tvName)
-        textView2 = itemView.findViewById(R.id.tvPrice)
-        //addToCartBtn = itemView.findViewById(R.id.addToCartBtn)
-       // removeFromWishlistBtn = itemView.findViewById(R.id.removeFromWishlistBtn)
+        init {
+            imageView = itemView.findViewById(R.id.imageView)
+            textView1 = itemView.findViewById(R.id.tvName)
+            textView2 = itemView.findViewById(R.id.tvPrice)
+            addToCartBtn = itemView.findViewById(R.id.addToCartBtn)
+            removeFromWishlistBtn = itemView.findViewById(R.id.removeFromWishlistBtn)
+        }
     }
 }

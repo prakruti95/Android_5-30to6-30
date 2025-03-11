@@ -108,6 +108,10 @@ class DashboardActivity : AppCompatActivity()
             {
                 startActivity(Intent(applicationContext,WishlistActivity::class.java))
             }
+            R.id.cart->
+            {
+                startActivity(Intent(applicationContext,CartAcivity::class.java))
+            }
 
             R.id.logout->
             {
