@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.picasso)
     //implementation(libs.photoview)
     implementation ("com.github.chrisbanes:PhotoView:2.3.0")
+    implementation ("com.razorpay:checkout:1.6.4")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

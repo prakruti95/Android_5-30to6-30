@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appproject.Activity.CartAcivity
+import com.example.appproject.Activity.PaymentActivity
 import com.example.appproject.Activity.WishlistActivity
 import com.example.appproject.ApiConfig.ApiClient
 import com.example.appproject.ApiConfig.Apiinterface
@@ -27,7 +28,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class CartAdapter(var context: Context?, var mutableList: MutableList<CartModel>) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
+class CartAdapter(var context: Context, var mutableList: MutableList<CartModel>) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
     lateinit var apiInterface: Apiinterface
     lateinit var sharedPreferences: SharedPreferences
@@ -78,6 +79,17 @@ class CartAdapter(var context: Context?, var mutableList: MutableList<CartModel>
                 }
             })
         }
+        holder.makePayment.setOnClickListener {
+
+            var i = Intent(context,PaymentActivity::class.java)
+            i.putExtra("id",mutableList[position].id)
+            i.putExtra("pName", mutableList[position].gift_name)
+            i.putExtra("pPrice", mutableList[position].gift_price)
+            i.putExtra("pDesc", mutableList[position].gift_description)
+            i.putExtra("pImage", mutableList[position].image)
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(i)
+        }
 
 
     }
@@ -87,14 +99,14 @@ class CartAdapter(var context: Context?, var mutableList: MutableList<CartModel>
         val imageView: ImageView
         val textView1: MaterialTextView
         val textView2: MaterialTextView
-        val addToCartBtn: MaterialButton
+        val makePayment: MaterialButton
         val removeFromCartBtn: MaterialButton
 
         init {
             imageView = itemView.findViewById(R.id.imageView)
             textView1 = itemView.findViewById(R.id.tvName)
             textView2 = itemView.findViewById(R.id.tvPrice)
-            addToCartBtn = itemView.findViewById(R.id.makePayment)
+            makePayment = itemView.findViewById(R.id.makePayment)
             removeFromCartBtn = itemView.findViewById(R.id.removeFromCartBtn)
         }
     }
