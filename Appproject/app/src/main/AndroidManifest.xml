@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Appproject"
         tools:targetApi="31">
         <activity
+            android:name=".Admin.Activity.AdminMainActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.PaymentActivity"
             android:exported="false" />
         <activity
@@ -47,6 +50,7 @@
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true" />
+
         <receiver
             android:name="com.razorpay.RzpTokenReceiver"
             android:exported="false">
@@ -54,13 +58,13 @@
                 <action android:name="rzp.device_token.share" />
             </intent-filter>
         </receiver>
-
-       <!-- <receiver android:name="com.razorpay.RzpTokenReceiver" android:exported="true">
+        <!--
+ <receiver android:name="com.razorpay.RzpTokenReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="com.example.appproject.ACTION_RECEIVE" />
             </intent-filter>
-        </receiver>-->
-
+        </receiver>
+        -->
         <activity
             android:name="com.razorpay.CheckoutActivity"
             android:exported="true"

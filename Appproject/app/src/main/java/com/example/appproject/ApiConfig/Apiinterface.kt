@@ -95,4 +95,15 @@ interface Apiinterface
         @Field("id") id: Int?,
     ): Call<Void>
 
+    @FormUrlEncoded
+    @POST("paymentadd.php")
+    fun paymentadd
+       (
+            @Field("pname") pname:String,
+            @Field("pprice") pprice:String,
+            @Field("pdes") pdes:String,
+            @Field("pimage") pimage:String,
+            @Field("mobile") mobile:String
+        ): Call<Void>
+
 }

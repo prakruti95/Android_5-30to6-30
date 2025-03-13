@@ -11,6 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.appproject.Admin.Activity.AdminMainActivity
 import com.example.appproject.ApiConfig.ApiClient
 import com.example.appproject.ApiConfig.Apiinterface
 import com.example.appproject.Model.SignupModel
@@ -60,30 +61,39 @@ class LoginActivity : AppCompatActivity()
             var phone = binding.edtPhone.text.toString()
             var pass = binding.edtPassword.text.toString()
 
-            var call: Call<SignupModel> = apiinterface.signin(phone,pass)
-            call.enqueue(object :Callback<SignupModel>
+            if(phone.equals("1234567890") && pass.equals("1234"))
             {
-                override fun onResponse(call: Call<SignupModel>, response: Response<SignupModel>) {
 
-                    Toast.makeText(applicationContext, "Login Success", Toast.LENGTH_SHORT).show()
-                    var xyz:SharedPreferences.Editor = sharedPreferences.edit()
+                startActivity(Intent(applicationContext,AdminMainActivity::class.java))
 
 
-                    var i = Intent(applicationContext,DashboardActivity::class.java)
-                    xyz.putBoolean("Appproject",true)
-                    xyz.putString("n1",phone)
-                    xyz.commit()
-                    startActivity(i)
-                    //startActivity(Intent(applicationContext,DashboardActivity::class.java))
-                }
+            }
+            else
+            {
+                var call: Call<SignupModel> = apiinterface.signin(phone,pass)
+                call.enqueue(object :Callback<SignupModel>
+                {
+                    override fun onResponse(call: Call<SignupModel>, response: Response<SignupModel>) {
 
-                override fun onFailure(call: Call<SignupModel>, t: Throwable) {
+                        Toast.makeText(applicationContext, "Login Success", Toast.LENGTH_SHORT).show()
+                        var xyz:SharedPreferences.Editor = sharedPreferences.edit()
 
-                    Toast.makeText(applicationContext, "Login Fail", Toast.LENGTH_SHORT).show()
 
-                }
-            })
+                        var i = Intent(applicationContext,DashboardActivity::class.java)
+                        xyz.putBoolean("Appproject",true)
+                        xyz.putString("n1",phone)
+                        xyz.commit()
+                        startActivity(i)
+                        //startActivity(Intent(applicationContext,DashboardActivity::class.java))
+                    }
 
+                    override fun onFailure(call: Call<SignupModel>, t: Throwable) {
+
+                        Toast.makeText(applicationContext, "Login Fail", Toast.LENGTH_SHORT).show()
+
+                    }
+                })
+            }
         }
 
 

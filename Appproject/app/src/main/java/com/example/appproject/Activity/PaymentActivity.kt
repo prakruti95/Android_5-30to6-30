@@ -86,10 +86,23 @@ class PaymentActivity : AppCompatActivity(), PaymentResultListener
 
     override fun onPaymentSuccess(p0: String?)
     {
-        Toast.makeText(this, "Payment Success", Toast.LENGTH_SHORT).show()
+
+        var call:Call<Void> = apiinterface.paymentadd(pName,pPrice,pDesc,pImage,mob)
+
+        call.enqueue(object:Callback<Void>
+        {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+
+                Toast.makeText(applicationContext, "Payment Success", Toast.LENGTH_SHORT).show()
 
 
-        //Entry Table
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Toast.makeText(applicationContext, "Payment Fail", Toast.LENGTH_SHORT).show()
+
+            }
+        })
     }
 
     override fun onPaymentError(p0: Int, p1: String?) {
