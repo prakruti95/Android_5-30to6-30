@@ -29,6 +29,8 @@ class AdminMainActivity : AppCompatActivity()
         admindashboardlist.add(AdminModel(R.drawable.baseline_preview_24,"Add Product"))
         admindashboardlist.add(AdminModel(R.drawable.baseline_preview_24,"View Orders"))
 
+
+
         var adapter = AdminAdapter(applicationContext,admindashboardlist)
         binding.grid.adapter=adapter
     }

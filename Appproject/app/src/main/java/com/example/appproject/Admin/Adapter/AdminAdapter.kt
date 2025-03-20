@@ -1,12 +1,14 @@
 package com.example.appproject.Admin.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.appproject.AddProdcutActivity
 import com.example.appproject.Admin.Model.AdminModel
 import com.example.appproject.R
 
@@ -34,6 +36,26 @@ class AdminAdapter(var context:Context,var list:MutableList<AdminModel>) :BaseAd
 
         var image:ImageView = view.findViewById(R.id.img)
         var text:TextView = view.findViewById(R.id.txt)
+
+        image.setOnClickListener {
+
+            if(position==0)
+            {
+                var i = Intent(context, AddProdcutActivity::class.java)
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                context.startActivity(i)
+            }
+            if(position==1)
+            {
+
+            }
+            if(position==2)
+            {
+
+            }
+
+
+        }
 
         image.setImageResource(list.get(position).image)
         text.setText(list.get(position).name)

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +30,7 @@ class PaymentActivity : AppCompatActivity(), PaymentResultListener
     var pPrice=""
     var pDesc=""
     var pImage=""
+    var id =0
     lateinit var apiinterface: Apiinterface
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -44,6 +46,7 @@ class PaymentActivity : AppCompatActivity(), PaymentResultListener
         setContentView(view)
 
         val intent = intent
+         id=intent.getIntExtra("id",404)
          pName = intent.getStringExtra("pName").toString()
          pPrice = intent.getStringExtra("pPrice").toString()
          pDesc = intent.getStringExtra("pDesc").toString()
@@ -87,25 +90,43 @@ class PaymentActivity : AppCompatActivity(), PaymentResultListener
     override fun onPaymentSuccess(p0: String?)
     {
 
-        var call:Call<Void> = apiinterface.paymentadd(pName,pPrice,pDesc,pImage,mob)
+        Toast.makeText(applicationContext, "Payment Success", Toast.LENGTH_LONG).show()
+        var i = Intent(applicationContext,TestActivity::class.java)
+        i.putExtra("id",id)
+        i.putExtra("pName",pName)
+        i.putExtra("pPrice",pPrice)
+        i.putExtra("pDesc",pDesc)
+        i.putExtra("pImage",pImage)
+        startActivity(i)
 
-        call.enqueue(object:Callback<Void>
-        {
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
-
-                Toast.makeText(applicationContext, "Payment Success", Toast.LENGTH_SHORT).show()
 
 
-            }
-
-            override fun onFailure(call: Call<Void>, t: Throwable) {
-                Toast.makeText(applicationContext, "Payment Fail", Toast.LENGTH_SHORT).show()
-
-            }
-        })
+    //        Log.d("TOPSTOPS","Success")
+//
+//        var call:Call<Void> = apiinterface.paymentadd("a","1","a","https:\\/\\/prakrutitech.buzz\\/AndroidAPI\\/images\\/samsung.png","9275003605")
+//
+//        Log.d("TOPSTOPS","Success2")
+////        call.enqueue(object:Callback<Void>
+////        {
+////            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+////
+////               Log.d("TOPSTOPS1",response.toString())
+////
+////
+////            }
+////
+////           override fun onFailure(call: Call<Void>, t: Throwable) {
+////
+////               Log.d("TOPSTOPS2",t.message.toString())
+////            }
+////        })
     }
 
-    override fun onPaymentError(p0: Int, p1: String?) {
-        Toast.makeText(this, "Payment Failed :-  $p0 : $p1", Toast.LENGTH_SHORT).show()    }
+    override fun onPaymentError(p0: Int, p1: String?)
+    {
+        //Toast.makeText(this, "Payment Failed :-  $p0 : OPSp1", Toast.LENGTH_SHORT).show()
+
+        Log.d("TOPSTOPS","Fail")
+    }
 
 }
