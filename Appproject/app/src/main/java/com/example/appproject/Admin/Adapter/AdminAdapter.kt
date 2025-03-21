@@ -11,6 +11,7 @@ import android.widget.TextView
 import com.example.appproject.Activity.PaymentActivity
 import com.example.appproject.Activity.PaymentViewActivity
 import com.example.appproject.AddProdcutActivity
+import com.example.appproject.AddSubProdcutActivity
 import com.example.appproject.Admin.Model.AdminModel
 import com.example.appproject.R
 
@@ -49,7 +50,9 @@ class AdminAdapter(var context:Context,var list:MutableList<AdminModel>) :BaseAd
             }
             if(position==1)
             {
-
+                var i = Intent(context, AddSubProdcutActivity::class.java)
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                context.startActivity(i)
             }
             if(position==2)
             {

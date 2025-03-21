@@ -6,6 +6,7 @@ import com.example.appproject.Model.CategoryModel
 import com.example.appproject.Model.DashboardModel
 import com.example.appproject.Model.SignupModel
 import com.example.appproject.Model.WishlistModel
+import com.example.projectex1.Model.data2
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -119,9 +120,21 @@ interface Apiinterface
         @Part("name") emp_name: RequestBody?,
         ): ResponseBody
 
+    @Multipart
+    @POST("addproduct.php")
+    suspend fun uploadImage2(
+        @Part url: MultipartBody.Part,
+        @Part("name") name: RequestBody?,
+        @Part("price") price: RequestBody?,
+        @Part("description") description: RequestBody?,
+        @Part("c_id") c_id: RequestBody?,
+    ): ResponseBody
+
 
     @GET("paymentview.php")
     fun paymentview() : Call<List<PaymentModel>>
 
+    @GET("dashboard_view.php")
+    fun dashboard_viewdata2():Call<List<data2>>
 
 }

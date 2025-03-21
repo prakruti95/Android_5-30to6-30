@@ -53,6 +53,7 @@ class AddProdcutActivity : AppCompatActivity()
     private fun setup()
     {
         edt1 = findViewById(R.id.name)
+
         image = findViewById(R.id.img)
         image.setOnClickListener { contract.launch("image/*") }
         btnsubmit = findViewById(R.id.btn_regi)

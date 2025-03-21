@@ -22,7 +22,10 @@
             android:exported="false" />
         <activity
             android:name=".AddProdcutActivity"
-            android:exported="true"></activity>
+            android:exported="true"/>
+        <activity
+            android:name=".AddSubProdcutActivity"
+            android:exported="true"/>
         <activity
             android:name=".Activity.TestActivity"
             android:exported="false" />
