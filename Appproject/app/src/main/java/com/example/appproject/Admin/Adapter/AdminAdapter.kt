@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.appproject.Activity.PaymentActivity
+import com.example.appproject.Activity.PaymentViewActivity
 import com.example.appproject.AddProdcutActivity
 import com.example.appproject.Admin.Model.AdminModel
 import com.example.appproject.R
@@ -51,7 +53,9 @@ class AdminAdapter(var context:Context,var list:MutableList<AdminModel>) :BaseAd
             }
             if(position==2)
             {
-
+                var i = Intent(context, PaymentViewActivity::class.java)
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                context.startActivity(i)
             }
 
 

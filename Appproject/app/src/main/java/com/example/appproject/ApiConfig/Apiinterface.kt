@@ -1,5 +1,6 @@
 package com.example.appproject.ApiConfig
 
+import com.example.appproject.Admin.Model.PaymentModel
 import com.example.appproject.Model.CartModel
 import com.example.appproject.Model.CategoryModel
 import com.example.appproject.Model.DashboardModel
@@ -117,5 +118,10 @@ interface Apiinterface
         @Part url: MultipartBody.Part,
         @Part("name") emp_name: RequestBody?,
         ): ResponseBody
+
+
+    @GET("paymentview.php")
+    fun paymentview() : Call<List<PaymentModel>>
+
 
 }
